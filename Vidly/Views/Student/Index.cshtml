@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Vidly.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StudentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StudentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StudentId })
+        </td>
+    </tr>
+    
+}
+   @{ 
+       var date = DateTime.Now.ToShortDateString();
+       var message = "Hello world";
+       @:Today's date is: @date
+   }
+    <br/>
+
+    @if (DateTime.IsLeapYear(DateTime.Now.Year))
+    {
+        @DateTime.Now.Year @:is a leap year.
+
+    }
+    else
+    {
+        @DateTime.Now.Year @:is not a leap year.
+    }
+        @*<h3> @message</h3>*@
+
+    <br />
+
+    @{ 
+        string str = "";
+        if( 1 > 0)
+        {
+            str = "Hello world";
+        }
+    }
+    <p>@str</p>
+
+</table>
